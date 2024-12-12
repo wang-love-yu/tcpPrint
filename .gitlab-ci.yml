@@ -1,0 +1,39 @@
+image: python:3.8
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+cache:
+  paths:
+    - .pip-cache/
+
+stages:
+  - build
+
+build-windows:
+  stage: build
+  tags:
+    - windows
+  script:
+    - pip install -r requirements.txt
+    - pyinstaller --onefile tcpprint.py
+  artifacts:
+    paths:
+      - dist/tcpprint.exe
+    expire_in: never
+  only:
+    - tags
+
+build-macos:
+  stage: build
+  tags:
+    - macos
+  script:
+    - pip install -r requirements.txt
+    - pyinstaller --onefile tcpprint.py
+  artifacts:
+    paths:
+      - dist/tcpprint
+    expire_in: never
+  only:
+    - tags

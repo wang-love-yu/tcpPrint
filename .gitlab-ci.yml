@@ -20,7 +20,7 @@ build-windows:
   artifacts:
     paths:
       - dist/tcpprint.exe
-    expire_in: never
+    expire_in: 30 days
   only:
     - tags
 
@@ -34,6 +34,6 @@ build-macos:
   artifacts:
     paths:
       - dist/tcpprint
-    expire_in: never
+    expire_in: 30 days
   only:
     - tags

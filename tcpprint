@@ -14,7 +14,7 @@ def send_file_via_tcp(host, port, file_path):
             data = f.read()  # 一次性读取所有内容
             s.send(data)  # 发送数据
                 
-        print(f"文件 {file_path} 已成功发送到 {host}:{port}")
+        print(f"1文件 {file_path} 已成功发送到 {host}:{port}")
         
     except FileNotFoundError:
         print(f"找不到文件: {file_path}")
